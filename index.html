@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Password Strength Checker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app" aria-labelledby="app-title">
+    <header class="app__header">
+      <h1 id="app-title">Password Strength Checker</h1>
+      <p>Test and generate stronger passwords with real-time security feedback.</p>
+    </header>
+
+    <section class="card" aria-labelledby="checker-title">
+      <h2 id="checker-title">Check Password Strength</h2>
+      <label for="password" class="sr-only">Enter Password</label>
+      <div class="input-row">
+        <input id="password" type="password" autocomplete="off" placeholder="Enter your password" />
+        <button id="toggle-password" type="button" class="btn btn--secondary" aria-pressed="false">Show</button>
+      </div>
+      <div class="action-row">
+        <button id="check-strength" type="button" class="btn btn--primary">Check Strength</button>
+      </div>
+
+      <div class="meter" aria-live="polite">
+        <div class="meter__labels">
+          <span>Security Meter</span>
+          <strong id="strength-label">Very Weak</strong>
+        </div>
+        <div class="meter__track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="strength-label">
+          <div id="strength-bar" class="meter__bar"></div>
+        </div>
+        <p class="score">Score: <strong id="score">0</strong>/100</p>
+      </div>
+
+      <article class="feedback">
+        <h3>Detailed Feedback</h3>
+        <ul id="feedback-list"></ul>
+      </article>
+
+      <article class="suggestions">
+        <h3>Suggestions</h3>
+        <ul id="suggestions-list"></ul>
+      </article>
+    </section>
+
+    <section class="card" aria-labelledby="generator-title">
+      <h2 id="generator-title">Password Generator</h2>
+      <div class="generator-controls">
+        <label for="length">Length: <span id="length-value">14</span></label>
+        <input id="length" type="range" min="8" max="32" value="14" />
+
+        <label><input id="use-uppercase" type="checkbox" checked /> Uppercase</label>
+        <label><input id="use-lowercase" type="checkbox" checked /> Lowercase</label>
+        <label><input id="use-numbers" type="checkbox" checked /> Numbers</label>
+        <label><input id="use-symbols" type="checkbox" checked /> Symbols</label>
+      </div>
+      <div class="input-row">
+        <input id="generated-password" type="text" readonly placeholder="Generated password" />
+        <button id="copy-password" type="button" class="btn btn--secondary">Copy</button>
+      </div>
+      <div class="action-row">
+        <button id="generate-password" type="button" class="btn btn--primary">Generate Password</button>
+      </div>
+      <p id="copy-status" class="status" aria-live="polite"></p>
+    </section>
+
+    <section class="card" aria-labelledby="tips-title">
+      <h2 id="tips-title">Password Tips</h2>
+      <ul class="tips-list">
+        <li>Use at least 12 characters.</li>
+        <li>Mix letters, numbers, and symbols.</li>
+        <li>Avoid dictionary words and predictable patterns.</li>
+        <li>Never reuse passwords.</li>
+        <li>Use unique passwords for each account.</li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
